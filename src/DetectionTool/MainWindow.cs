@@ -43,7 +43,7 @@ namespace DetectionTool {
     }
 
     private void linkLabelSupport_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-      System.Diagnostics.Process.Start("https://widget.overwolf.com/en/support/solutions/articles/9000228502-june-2023-infected-mods-detection-tool");
+      System.Diagnostics.Process.Start("https://support.curseforge.com/en/support/solutions/articles/9000228509-june-2023-infected-mods-detection-tool");
     }
   }
 }
