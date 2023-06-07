@@ -16,7 +16,7 @@ TODO
 
 ### MacOS
 
-As of current information, MacOS is not able to be impacted by the worm `fractureiser`
+As of current information, MacOS is not able to be impacted by the virus `fractureiser`
 
 # 
 This tool relied on the amazing work of the author community who has investigated these malicious files and published their efforts on [hackmd.io](https://hackmd.io/B46EYzKXSfWSF35DeCZz9A#Credits).
