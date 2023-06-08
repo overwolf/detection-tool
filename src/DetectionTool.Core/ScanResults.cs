@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DetectionTool {
+namespace DetectionTool.Core {
   internal interface IScanResults {
     bool Detected { get; }
     bool FoundInPath { get; }

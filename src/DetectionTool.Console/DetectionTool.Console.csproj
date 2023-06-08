@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<PublishSingleFile>true</PublishSingleFile>
+	<SelfContained>true</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\DetectionTool.Core\Constants.cs" Link="Constants.cs" />
+    <Compile Include="..\DetectionTool.Core\Scanner.cs" Link="Scanner.cs" />
+    <Compile Include="..\DetectionTool.Core\ScanResults.cs" Link="ScanResults.cs" />
+  </ItemGroup>
+
+</Project>
