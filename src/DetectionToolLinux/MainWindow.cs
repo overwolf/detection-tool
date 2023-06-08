@@ -1,6 +1,7 @@
 using Gtk;
 using System;
-using System.Drawing;
+using System.Diagnostics;
+using System.Collections.Generic;
 using DetectionTool.Core;
 
 namespace DetectionTool
@@ -13,7 +14,7 @@ namespace DetectionTool
         private Label labelFoundInStartupValue;
         private Label labelSuspiciousFiles;
         private TextView textBoxSuspiciousFiles;
-        private Label labelSupport;
+        private LinkButton linkButtonSupport;
 
         public MainWindow() : base("DetectionTool")
         {
@@ -24,26 +25,30 @@ namespace DetectionTool
             labelSummaryValue = new Label();
             labelFoundInStartupValue = new Label();
             labelSuspiciousFiles = new Label("Suspicious Files:");
-            textBoxSuspiciousFiles = new TextView();
-            labelSupport = new Label();
-            labelSupport.Markup = "<a href=\"support\">" + Constants.kSupportArticle + "</a>";
-            labelSupport.UseMarkup = true;
-            labelSupport.ButtonPressEvent += OnLabelSupportClicked;
+            textBoxSuspiciousFiles = new TextView(){
+            Editable = false,
+            WrapMode = WrapMode.Word
+            };
+            linkButtonSupport = new LinkButton(Constants.kSupportArticle, "Get Support");
 
             buttonScan.Clicked += OnButtonScanClicked;
+            linkButtonSupport.Clicked += OnLinkButtonSupportClicked;
 
-            var mainLayout = new VBox();
+            var mainLayout = new Box(Orientation.Vertical, 0);
 
             mainLayout.PackStart(buttonScan, false, false, 0);
             mainLayout.PackStart(labelDetectedResult, false, false, 0);
             mainLayout.PackStart(labelSummaryValue, false, false, 0);
-            mainLayout.PackStart(new HSeparator(), false, false, 0);
-            mainLayout.PackStart(textBoxSuspiciousFiles, true, true, 0);
             mainLayout.PackStart(labelFoundInStartupValue, false, false, 0);
             mainLayout.PackStart(labelSuspiciousFiles, false, false, 0);
-            mainLayout.PackStart(labelSupport, false, false, 0);
+            mainLayout.PackStart(new Separator(Orientation.Horizontal), false, false, 0);
+            mainLayout.PackStart(textBoxSuspiciousFiles, true, true, 0);
+            mainLayout.PackStart(linkButtonSupport, false, false, 0);
 
             Add(mainLayout);
+
+            LoadStyles(); // Call the LoadStyles method to load the CSS styles
+
             ShowAll();
         }
 
@@ -58,37 +63,65 @@ namespace DetectionTool
                 if (results.Detected)
                 {
                     labelDetectedResult.Text = "YES";
-                    labelDetectedResult.ModifyFg(StateType.Normal, new Gdk.Color(255, 0, 0));
+                    labelDetectedResult.StyleContext.AddClass("detected-label");
                     labelSummaryValue.Text = "Possible Malware traces were detected on your machine";
                     labelFoundInStartupValue.Text = results.FoundInStartUp ? "YES" : "NO";
-                    labelFoundInStartupValue.ModifyFg(StateType.Normal, results.FoundInStartUp ? new Gdk.Color(255, 0, 0) : new Gdk.Color(0, 255, 0));
-                    textBoxSuspiciousFiles.Buffer.Text = string.Join(Environment.NewLine, results.DetectedFiles);
+                    labelFoundInStartupValue.StyleContext.AddClass(results.FoundInStartUp ? "detected-label" : "not-detected-label");
+                    textBoxSuspiciousFiles.Buffer.Text = string.Join(Environment.NewLine, results.DetectedFiles ?? Enumerable.Empty<string>());
                     labelSuspiciousFiles.Visible = true;
-                    textBoxSuspiciousFiles.Visible = true;
-                    labelSupport.Visible = true;
+                    linkButtonSupport.Visible = true;
                 }
                 else
                 {
                     labelDetectedResult.Text = "NO";
-                    labelDetectedResult.ModifyFg(StateType.Normal, new Gdk.Color(0, 255, 0));
+                    labelDetectedResult.StyleContext.AddClass("not-detected-label");
                     labelSummaryValue.Text = "Malware was not detected on your machine";
                     labelFoundInStartupValue.Text = "NO";
-                    labelFoundInStartupValue.ModifyFg(StateType.Normal, new Gdk.Color(0, 255, 0));
+                    labelFoundInStartupValue.StyleContext.AddClass("not-detected-label");
                 }
             }
             catch (Exception ex)
             {
                 labelDetectedResult.Text = "Inconclusive";
-                labelDetectedResult.ModifyFg(StateType.Normal, new Gdk.Color(255, 165, 0));
+                labelDetectedResult.StyleContext.AddClass("inconclusive-label");
                 labelSummaryValue.Text = $"Scan failed. {ex.Message}";
                 labelFoundInStartupValue.Text = "Inconclusive";
-                labelFoundInStartupValue.ModifyFg(StateType.Normal, new Gdk.Color(255, 165, 0));
+                labelFoundInStartupValue.StyleContext.AddClass("inconclusive-label");
             }
         }
-
-        private void OnLabelSupportClicked(object? sender, ButtonPressEventArgs e)
+        private void OnLinkButtonSupportClicked(object? sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(Constants.kSupportArticle);
+            var url = Constants.kSupportArticle;
+            var psi = new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            };
+            Process.Start(psi);
         }
+
+
+
+        private void LoadStyles()
+        {
+            var cssProvider = new CssProvider();
+            cssProvider.LoadFromPath("style.css");
+
+            var styleContext = buttonScan.StyleContext;
+            styleContext.AddProvider(cssProvider, Gtk.StyleProviderPriority.Application);
+            styleContext = labelDetectedResult.StyleContext;
+            styleContext.AddProvider(cssProvider, Gtk.StyleProviderPriority.Application);
+            styleContext = labelSummaryValue.StyleContext;
+            styleContext.AddProvider(cssProvider, Gtk.StyleProviderPriority.Application);
+            styleContext = labelFoundInStartupValue.StyleContext;
+            styleContext.AddProvider(cssProvider, Gtk.StyleProviderPriority.Application);
+            styleContext = labelSuspiciousFiles.StyleContext;
+            styleContext.AddProvider(cssProvider, Gtk.StyleProviderPriority.Application);
+            styleContext = textBoxSuspiciousFiles.StyleContext;
+            styleContext.AddProvider(cssProvider, Gtk.StyleProviderPriority.Application);
+            styleContext = linkButtonSupport.StyleContext;
+            styleContext.AddProvider(cssProvider, Gtk.StyleProviderPriority.Application);
+        }
+
     }
 }
