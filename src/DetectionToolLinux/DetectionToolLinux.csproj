@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GtkSharp" Version="3.24.24.95" />
+    <Compile Include="..\DetectionTool.Core\Constants.cs">
+      <Link>Constants.cs</Link>
+    </Compile>
+    <Compile Include="..\DetectionTool.Core\Scanner.cs">
+      <Link>Scanner.cs</Link>
+    </Compile>
+    <Compile Include="..\DetectionTool.Core\ScanResults.cs">
+      <Link>ScanResults.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+</Project>
