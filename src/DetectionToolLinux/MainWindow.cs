@@ -9,8 +9,11 @@ namespace DetectionTool
     public partial class MainWindow : Window
     {
         private Button buttonScan;
-        private Label labelDetectedResult;
+        private Label labelSummary;
         private Label labelSummaryValue;
+        private Label labelDetected;
+        private Label labelDetectedResult;
+        private Label labelStartUp;
         private Label labelFoundInStartupValue;
         private Label labelSuspiciousFiles;
         private TextView textBoxSuspiciousFiles;
@@ -21,8 +24,11 @@ namespace DetectionTool
             SetDefaultSize(400, 300);
 
             buttonScan = new Button("Scan");
-            labelDetectedResult = new Label();
+            labelSummary = new Label("Summary:");
             labelSummaryValue = new Label();
+            labelDetected = new Label("Detected:");
+            labelDetectedResult = new Label();
+            labelStartUp = new Label("Detected on Startup folder:");
             labelFoundInStartupValue = new Label();
             labelSuspiciousFiles = new Label("Suspicious Files:");
             textBoxSuspiciousFiles = new TextView(){
@@ -37,8 +43,11 @@ namespace DetectionTool
             var mainLayout = new Box(Orientation.Vertical, 0);
 
             mainLayout.PackStart(buttonScan, false, false, 0);
-            mainLayout.PackStart(labelDetectedResult, false, false, 0);
+            mainLayout.PackStart(labelSummary, false, false, 0);
             mainLayout.PackStart(labelSummaryValue, false, false, 0);
+            mainLayout.PackStart(labelDetected, false , false, 0);
+            mainLayout.PackStart(labelDetectedResult, false, false, 0);
+            mainLayout.PackStart(labelStartUp, false, false, 0);
             mainLayout.PackStart(labelFoundInStartupValue, false, false, 0);
             mainLayout.PackStart(labelSuspiciousFiles, false, false, 0);
             mainLayout.PackStart(new Separator(Orientation.Horizontal), false, false, 0);
@@ -59,7 +68,6 @@ namespace DetectionTool
             try
             {
                 var results = scanner.Scan();
-
                 if (results.Detected)
                 {
                     labelDetectedResult.Text = "YES";
@@ -67,7 +75,7 @@ namespace DetectionTool
                     labelSummaryValue.Text = "Possible Malware traces were detected on your machine";
                     labelFoundInStartupValue.Text = results.FoundInStartUp ? "YES" : "NO";
                     labelFoundInStartupValue.StyleContext.AddClass(results.FoundInStartUp ? "detected-label" : "not-detected-label");
-                    textBoxSuspiciousFiles.Buffer.Text = string.Join(Environment.NewLine, results.DetectedFiles ?? Enumerable.Empty<string>());
+                    textBoxSuspiciousFiles.Buffer.Text = string.Join(Environment.NewLine, results.DetectedFiles!);
                     labelSuspiciousFiles.Visible = true;
                     linkButtonSupport.Visible = true;
                 }
