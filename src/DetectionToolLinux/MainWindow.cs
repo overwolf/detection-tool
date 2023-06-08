@@ -43,16 +43,27 @@ namespace DetectionTool
             var mainLayout = new Box(Orientation.Vertical, 0);
 
             mainLayout.PackStart(buttonScan, false, false, 0);
-            mainLayout.PackStart(labelSummary, false, false, 0);
-            mainLayout.PackStart(labelSummaryValue, false, false, 0);
-            mainLayout.PackStart(labelDetected, false , false, 0);
-            mainLayout.PackStart(labelDetectedResult, false, false, 0);
-            mainLayout.PackStart(labelStartUp, false, false, 0);
-            mainLayout.PackStart(labelFoundInStartupValue, false, false, 0);
-            mainLayout.PackStart(labelSuspiciousFiles, false, false, 0);
+
+            var labelSummaryRow = new Box(Orientation.Horizontal, 0);
+            labelSummaryRow.PackStart(labelSummary, false, false, 5);
+            labelSummaryRow.PackStart(labelSummaryValue, false, false, 0);
+            mainLayout.PackStart(labelSummaryRow, false, false, 0);
+
+            var labelDetectedRow = new Box(Orientation.Horizontal, 0);
+            labelDetectedRow.PackStart(labelDetected, false, false, 5);
+            labelDetectedRow.PackStart(labelDetectedResult, false, false, 0);
+            mainLayout.PackStart(labelDetectedRow, false, false, 0);
+
+            var labelStartUpRow = new Box(Orientation.Horizontal, 0);
+            labelStartUpRow.PackStart(labelStartUp, false, false, 5);
+            labelStartUpRow.PackStart(labelFoundInStartupValue, false, false, 0);
+            mainLayout.PackStart(labelStartUpRow, false, false, 0);
+            var suspiciousFilesRow = new Box(Orientation.Horizontal, 0);
+            suspiciousFilesRow.PackStart(labelSuspiciousFiles, false, false, 0);
             mainLayout.PackStart(new Separator(Orientation.Horizontal), false, false, 0);
             mainLayout.PackStart(textBoxSuspiciousFiles, true, true, 0);
             mainLayout.PackStart(linkButtonSupport, false, false, 0);
+
 
             Add(mainLayout);
 
