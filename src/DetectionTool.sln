@@ -5,6 +5,10 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectionTool", "DetectionTool\DetectionTool.csproj", "{7070D53E-1E0D-4F5C-92A4-0244A412AC66}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DetectionTool.Console", "DetectionTool.Console\DetectionTool.Console.csproj", "{09DE4A22-9B2A-4EC6-B044-A46C9491D705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectionTool.Core", "DetectionTool.Core\DetectionTool.Core.csproj", "{B4ACEB03-8F74-4BE6-B4D9-7C78C07B8C84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7070D53E-1E0D-4F5C-92A4-0244A412AC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7070D53E-1E0D-4F5C-92A4-0244A412AC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7070D53E-1E0D-4F5C-92A4-0244A412AC66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09DE4A22-9B2A-4EC6-B044-A46C9491D705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09DE4A22-9B2A-4EC6-B044-A46C9491D705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09DE4A22-9B2A-4EC6-B044-A46C9491D705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09DE4A22-9B2A-4EC6-B044-A46C9491D705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4ACEB03-8F74-4BE6-B4D9-7C78C07B8C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4ACEB03-8F74-4BE6-B4D9-7C78C07B8C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4ACEB03-8F74-4BE6-B4D9-7C78C07B8C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4ACEB03-8F74-4BE6-B4D9-7C78C07B8C84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
