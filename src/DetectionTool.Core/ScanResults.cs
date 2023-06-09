@@ -6,7 +6,7 @@ namespace DetectionTool.Core {
     bool FoundInPath { get; }
     bool FoundInStartUp { get; }
 
-    IEnumerable<string>? DetectedFiles { get; }
+    IEnumerable<string> DetectedFiles { get; }
   }
 
   internal class ScanResults : IScanResults {
@@ -14,6 +14,6 @@ namespace DetectionTool.Core {
     public bool FoundInPath { get; set; }
     public bool FoundInStartUp { get; set; }
 
-    public IEnumerable<string>? DetectedFiles { get; set; }
+    public IEnumerable<string> DetectedFiles { get; set; }
   }
 }

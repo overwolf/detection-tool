@@ -1,6 +1,6 @@
 ﻿using Gtk;
 
-namespace DetectionTool
+namespace DetectionToolLinux
 {
     internal static class Program
     {
