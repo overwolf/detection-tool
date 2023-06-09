@@ -12,6 +12,11 @@ namespace DetectionTool
         {
             Application.Init();
             MainWindow mainWindow = new MainWindow();
+            mainWindow.DeleteEvent += (sender, eventArgs) =>
+            {
+                // Perform any necessary cleanup tasks here
+                Application.Quit();
+            };
             mainWindow.ShowAll();
             Application.Run();
         }
