@@ -14,7 +14,7 @@ static void RunScan() {
       Console.WriteLine("Possible Malware traces were detected on your machine");
       Console.WriteLine();
       Console.WriteLine("Suspicious Files:");
-      foreach(var detectedFile in results.DetectedFiles) {
+      foreach(var detectedFile in results.DetectedFiles!) {
         Console.WriteLine($"  => {detectedFile}");
       }
       Console.WriteLine();

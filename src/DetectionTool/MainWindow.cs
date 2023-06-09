@@ -22,7 +22,7 @@ namespace DetectionTool {
           labelSummaryValue.Text = "Possible Malware traces were detected on your machine";
           labelFoundInStartupValue.Text = results.FoundInStartUp ? "YES" : "NO";
           labelFoundInStartupValue.ForeColor = results.FoundInStartUp ? Color.Red : Color.Green;
-          textBoxSuspiciousFiles.Text = string.Join(Environment.NewLine, results.DetectedFiles);
+          textBoxSuspiciousFiles.Text = string.Join(Environment.NewLine, results.DetectedFiles!);
           labelSuspiciousFiles.Visible = true;
           textBoxSuspiciousFiles.Visible = true;
           linkLabelSupport.Visible = true;
