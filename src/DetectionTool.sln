@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DetectionTool.Console", "De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectionTool.Core", "DetectionTool.Core\DetectionTool.Core.csproj", "{B4ACEB03-8F74-4BE6-B4D9-7C78C07B8C84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectionToolLinux", "DetectionToolLinux\DetectionToolLinux.csproj", "{89BBE110-AEBA-4333-A2EB-38058318465D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B4ACEB03-8F74-4BE6-B4D9-7C78C07B8C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4ACEB03-8F74-4BE6-B4D9-7C78C07B8C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4ACEB03-8F74-4BE6-B4D9-7C78C07B8C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BBE110-AEBA-4333-A2EB-38058318465D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BBE110-AEBA-4333-A2EB-38058318465D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BBE110-AEBA-4333-A2EB-38058318465D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BBE110-AEBA-4333-A2EB-38058318465D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
