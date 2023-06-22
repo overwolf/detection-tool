@@ -1,5 +1,5 @@
 ﻿src/.vs
 src/**/bin
 src/**/obj
-src/.idea
+/src/.idea/
 .vscode/*
