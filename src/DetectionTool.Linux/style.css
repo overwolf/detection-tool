@@ -1,0 +1,11 @@
+.detected-label {
+    color: red;
+}
+
+.not-detected-label {
+    color: green;
+}
+
+.inconclusive-label {
+    color: orange;
+}
