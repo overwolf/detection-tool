@@ -3,7 +3,7 @@
 ## Quick install guide
 
 ### Windows
-In order to quickly install this detection tool, click on the [releases](https://github.com/overwolf/detection-tool) tab on the ride side of the screen
+In order to quickly install this detection tool, click on the [releases](https://github.com/overwolf/detection-tool) tab on the right side of the screen
 
 Then click on the newest .exe file which should install it
 
